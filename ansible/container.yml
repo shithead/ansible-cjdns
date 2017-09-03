@@ -1,7 +1,7 @@
-version: "1"
+version: "2"
 services:
   cjdns:
-    image: centos:7
+    from: centos:7
     ports:
       - "22222:22222" # The port UPDInterface binds to
       - "11234" # The admin port
@@ -9,7 +9,7 @@ services:
       - NET_ADMIN # Needed for the tun magic
     devices:
       - "/dev/net/tun" # Needed for the tun magic
-    command: sh -c "cjdroute --nobg < /etc/cjdroute.conf"
+    command: ["cjdroute --nobg < /etc/cjdroute.conf"]
 registries: {}
   # Add optional registries used for deployment. For example:
   #  google:
